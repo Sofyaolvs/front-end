@@ -35,7 +35,7 @@ function App() {
             path="pedale-por-fortaleza"
             element={<CycleAroundFortalezaPage />}
           />
-          <Route path="quiz" element={<AdminAcessPage/>} />
+          <Route path="quiz" element={<QuizPage />} />
           <Route path="rotas-encontradas" element={<QuizResultPage />} />
           <Route path="/rotas" element={<AllRoutesPage />} />
           <Route path="/rotas/:routeId" element={<RouteDetails />} />
@@ -48,7 +48,7 @@ function App() {
             path="rotas-encontradas/rotas/:routeId"
             element={<RouteDetails />}
           />
-          <Route path="admin" element={<QuizPage />} />
+          <Route path="admin" element={<AdminAcessPage/>} />
           <Route path="admin/escolher-pagina" element={<ChoosePage/>} />
           <Route path="admin/criar-conteudo" element={<CreateContentPage/>} />
           <Route path="admin/criar-geojson" element={<CreateGeojsonPage/>} />

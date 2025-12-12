@@ -67,6 +67,10 @@ const AcessibilityBar = ({ isMobile, isTablet }) => {
                 {externalLink.title}
               </StyledLink>
             ))}
+            <Divider>|</Divider>
+            <StyledLink href="/admin" style={{ opacity: 0.6, fontSize: '0.9em' }}>
+              Admin
+            </StyledLink>
           </FuncionalitiesContainer>
         </>
       ) : (
