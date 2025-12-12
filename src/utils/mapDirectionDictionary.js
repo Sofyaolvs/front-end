@@ -1,0 +1,16 @@
+export const MapDirectionDictionary = {
+    "SN": "Sentido Sul - Norte",
+    "NS": "Sentido Norte - Sul",
+    "OL": "Sentido Oeste - Leste",
+    "LO": "Sentido Leste - Oeste",
+    "NO": "Sentido Norte - Oeste",
+    "ON": "Sentido Oeste - Norte",
+    "LN": "Sentido Leste - Norte",
+    "NL": "Sentido Norte - Leste",
+    "SO": "Sentido Sul - Oeste",
+    "OS": "Sentido Oeste - Sul",
+    "SL": "Sentido Sul - Leste",
+    "LS": "Sentido Leste - Sul",
+    "Desvio": "Desvio",
+    "Circular":"Circular",
+  }

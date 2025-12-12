@@ -1,0 +1,13 @@
+<svg width="336" height="32" viewBox="0 0 336 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="32" height="32" rx="16" fill="#9E9E9E" fill-opacity="0.3"/>
+<rect x="1" y="1" width="30" height="30" rx="15" stroke="#9E9E9E" stroke-opacity="0.3" stroke-width="2"/>
+<circle cx="16" cy="16" r="10" fill="#58B3A6"/>
+<path d="M32 15C31.4477 15 31 15.4477 31 16C31 16.5523 31.4477 17 32 17V16V15ZM32 16V17H152V16V15H32V16Z" fill="#9E9E9E" fill-opacity="0.3"/>
+<rect x="152" width="32" height="32" rx="16" fill="#9E9E9E" fill-opacity="0.3"/>
+<rect x="153" y="1" width="30" height="30" rx="15" stroke="#9E9E9E" stroke-opacity="0.3" stroke-width="2"/>
+<circle cx="168" cy="16" r="10" fill="#9E9E9E" fill-opacity="0.3"/>
+<path d="M184 15C183.448 15 183 15.4477 183 16C183 16.5523 183.448 17 184 17V16V15ZM184 16V17H304V16V15H184V16Z" fill="#9E9E9E" fill-opacity="0.3"/>
+<rect x="304" width="32" height="32" rx="16" fill="#9E9E9E" fill-opacity="0.3"/>
+<rect x="305" y="1" width="30" height="30" rx="15" stroke="#9E9E9E" stroke-opacity="0.3" stroke-width="2"/>
+<circle cx="320" cy="16" r="10" fill="#9E9E9E" fill-opacity="0.3"/>
+</svg>
