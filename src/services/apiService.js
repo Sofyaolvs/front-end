@@ -6,7 +6,7 @@ const emailApi = axios.create({
   baseURL: EMAIL_API_URL,
 })
 
-const CONTENT_API_URL = 'https://bora-de-bike-api-1.onrender.com/' || ""
+const CONTENT_API_URL = import.meta.env.VITE_API_URL || ""
 const contentApi = axios.create({
   baseURL: CONTENT_API_URL,
 })
