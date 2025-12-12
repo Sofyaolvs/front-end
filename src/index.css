@@ -36,6 +36,8 @@ img {
   font-weight: bold;
   line-height: 30px;
   color: #FFFFFF;
+  cursor: pointer !important;
+  pointer-events: auto !important;
 }
 
 .custom-div-apoio-icon {
@@ -72,6 +74,8 @@ img {
   justify-content: center;
   align-items: center;
   height: 100%;
+  cursor: pointer !important;
+  pointer-events: auto !important;
 }
 
 .marker-apoio {
