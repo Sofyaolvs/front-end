@@ -11,7 +11,7 @@ import menuIcon from "../../assets/menuOrange.svg"
 import { useNavigate, useLocation } from "react-router-dom"
 import { useAcessibilityContext } from "../../contexts/AcessibilityContext"
 import { useSearch } from "../../contexts/SearchContext"
-
+import adminIcon from '../../assets/adminIcon.svg'
 import SearchBox from "../SearchBox/SearchBox"
 import { useWindowDimensions } from "../../hooks/useWindowDimensions"
 
@@ -94,7 +94,7 @@ const NavBar = ({
               to="/admin"
               style={{ opacity: 0.6, fontSize: '0.9em' }}
             >
-              Admin
+            <img src={adminIcon} alt="Administrados" style={{height:'24px'}} />
             </PageLink>
             <SearchBox
               isNav={true}
