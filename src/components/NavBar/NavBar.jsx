@@ -87,6 +87,15 @@ const NavBar = ({
                 </PageLink>
               )
             )}
+            <PageLink
+              className="pageLink"
+              $isActive={location.pathname === "/admin"}
+              onClick={() => handlePageChange("/admin")}
+              to="/admin"
+              style={{ opacity: 0.6, fontSize: '0.9em' }}
+            >
+              Admin
+            </PageLink>
             <SearchBox
               isNav={true}
               isWeb={isWeb}
