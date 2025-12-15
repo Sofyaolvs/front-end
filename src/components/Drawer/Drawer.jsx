@@ -2,6 +2,7 @@ import React, { useEffect } from "react"
 import { DrawerContainer, DrawerPageLink, DrawerPagesContainer } from "./style"
 import close from "../../assets/closeOrange.svg"
 import boraCorLogo from "../../assets/boraDeBikeCor.svg"
+import adminIcon from "../../assets/adminIcon.svg"
 import { navModules } from "../../utils/modules/navModules"
 import { useAcessibilityContext } from "../../contexts/AcessibilityContext"
 import { usePreventScroll } from "react-aria"
@@ -60,6 +61,21 @@ const Drawer = ({ isOpen, setIsOpen }) => {
             {module.title}
           </DrawerPageLink>
         ))}
+        <DrawerPageLink
+          className="drawerPage"
+          $isActive={location.pathname === "/admin"}
+          onClick={() => handleSelectPage("/admin")}
+          to="/admin"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            opacity: 0.8
+          }}
+        >
+          <img src={adminIcon} alt="Admin" style={{ height: '20px' }} />
+          Administrador
+        </DrawerPageLink>
       </DrawerPagesContainer>
     </DrawerContainer>
   )

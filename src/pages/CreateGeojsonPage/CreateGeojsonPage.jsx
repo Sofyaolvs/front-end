@@ -46,12 +46,14 @@ const CreateGeojsonPage = () => {
   const [showDeleteVersionPopup, setShowDeleteVersionPopup] = useState(false)
   const [fileToDelete, setFileToDelete] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
+  const [isLoadingFiles, setIsLoadingFiles] = useState(true)
 
   useEffect(() => {
     fetchGeoJSONFiles()
   }, [])
 
   const fetchGeoJSONFiles = async () => {
+    setIsLoadingFiles(true)
     try {
       const response = await getAllGeoJSON()
       const files = response.data.map(item => ({
@@ -80,6 +82,8 @@ const CreateGeojsonPage = () => {
       }
     } catch (error) {
       console.error("Erro ao buscar arquivos GeoJSON:", error)
+    } finally {
+      setIsLoadingFiles(false)
     }
   }
 
@@ -355,7 +359,17 @@ const CreateGeojsonPage = () => {
           </ButtonContainer>
         )}
 
-        {uploadedFiles.length > 0 && (
+        {isLoadingFiles ? (
+          <div style={{
+            textAlign: 'center',
+            padding: '2rem',
+            width: '100%',
+            color: 'var(--neutral-dark-gray)',
+            fontSize: '1rem'
+          }}>
+            Carregando versões do GeoJSON...
+          </div>
+        ) : uploadedFiles.length > 0 ? (
           <UploadedFilesList>
             {uploadedFiles.map((file) => (
               <FileVersionItem
@@ -371,6 +385,16 @@ const CreateGeojsonPage = () => {
               />
             ))}
           </UploadedFilesList>
+        ) : (
+          <div style={{
+            textAlign: 'center',
+            padding: '2rem',
+            width: '100%',
+            color: 'var(--neutral-dark-gray)',
+            fontSize: '1rem'
+          }}>
+            Nenhuma versão do GeoJSON encontrada
+          </div>
         )}
       </FormContainer>
 

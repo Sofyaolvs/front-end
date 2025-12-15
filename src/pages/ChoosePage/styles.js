@@ -12,7 +12,7 @@ export const Container = styled.div`
 
 export const CardsContainer = styled.div`
   display: flex;
-  gap: 16rem;
+  gap: 4rem;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -20,5 +20,6 @@ export const CardsContainer = styled.div`
 
   @media (max-width: 768px) {
     flex-direction: column;
+    gap: 2rem;
   }
 `

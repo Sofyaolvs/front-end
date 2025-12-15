@@ -4,9 +4,8 @@ export const Container = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--);
+  background-color: var(--primary-green);
   position: fixed;
-  bottom: 0;
   bottom: calc(1rem + env(safe-area-inset-bottom));
   right: 16px;
   border-radius: 100%;

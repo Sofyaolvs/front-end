@@ -3,25 +3,33 @@ import styled from "styled-components"
 export const FileItemContainer = styled.div`
   display: flex;
   align-items: center;
-  padding: 1rem 0;
+  padding: 1.5rem 0;
   width: 100%;
   gap: 1rem;
 
   @media (max-width: 840px) {
     flex-direction: column;
-    align-items: flex-start;
-    padding: 0.75rem 0;
-    gap: 0.75rem;
+    align-items: stretch;
+    padding: 1rem 0;
+    gap: 1rem;
   }
 `
+
 
 export const FileItemContent = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex: 1;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.75rem;
   border-bottom: 2px solid var(--neutral-black);
+
+  @media (max-width: 840px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding-bottom: 1rem;
+  }
 `
 
 export const FileItemInfo = styled.div`
@@ -88,15 +96,25 @@ export const FileItemButton = styled.button`
 `
 
 export const DownloadFileButton = styled.button`
-  background:transparent;
-  border:none;
-  color:var(--primary-green);
-  font-size:16px;
-  border-bottom:2px solid var(--primary-green);
-  cursor:pointer;
-  margin-top:16px
+  background: transparent;
+  border: none;
+  color: var(--primary-green);
+  font-size: 16px;
+  border-bottom: 2px solid var(--primary-green);
+  cursor: pointer;
+  padding: 0.5rem 0;
+  white-space: nowrap;
 
-  &:hover{
-  opacity:0.7;
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  @media (max-width: 840px) {
+    font-size: 14px;
   }
 `

@@ -22,11 +22,16 @@ export const FormContainer = styled.div`
   max-width: 1194px;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 1rem;
   padding: ${({ $isTablet }) => ($isTablet ? "1.5rem 1rem" : "2rem 2rem")};
   border-radius: 24px;
-  background:  #F8F8F8;
+  background: #F8F8F8;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 840px) {
+    padding: 1rem;
+    gap: 0.75rem;
+  }
 `
 
 export const FormGroup = styled.div`
@@ -265,5 +270,9 @@ export const EditIcon = styled.img`
 
   &:active {
     transform: scale(0.95);
+  }
+
+  @media (max-width: 840px) {
+    display: none;
   }
 `

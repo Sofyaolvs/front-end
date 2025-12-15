@@ -63,6 +63,7 @@ const NavBar = ({
           }}
         />
 
+
         {!isMobile && !isTablet && width > 1289 ? (
           <PagesContainer>
             {navModules.map((module, index) =>
