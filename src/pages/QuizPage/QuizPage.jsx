@@ -113,14 +113,14 @@ export function QuizPage() {
       return
     }
 
-    const questionOneDicionary = { 0: 5, 1: 2, 2: 3, 3: 4, 4: 5 }
+    const questionOneDicionary = { 0: 1, 1: 2, 2: 3, 3: 4, 4: 5 }
     const pEner = questionOneDicionary[selectedEmoji]
     const pGast = selectedTypes.find((rT) => rT.value === 0) ? 1 : 0
     const pCult = selectedTypes.find((rT) => rT.value === 1) ? 1 : 0
     const pNat = selectedTypes.find((rT) => rT.value === 2) ? 1 : 0
     const pRec = selectedTypes.find((rT) => rT.value === 3) ? 1 : 0
     const pCont = selectedTypes.find((rT) => rT.value === 4) ? 1 : 0
-    const pCom = isAccompanied ? 0.5 : 1
+    const pCom = isAccompanied ? 1 : 0.5
 
     const bestRoutes = await calculateBestRoutes(
       pEner,

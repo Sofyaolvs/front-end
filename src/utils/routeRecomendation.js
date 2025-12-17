@@ -45,6 +45,13 @@ function calculateRouteGrade(
 
   const c = (1 / pCom) * ((segV + segP) / 2)
 
+  console.log("CALCULO DAS ROTAS")
+  console.log("a ="+a)
+  console.log("b ="+b)
+  console.log("c ="+c)
+
+
+
   return a + b + c
 }
 
