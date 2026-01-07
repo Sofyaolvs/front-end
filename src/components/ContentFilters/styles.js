@@ -16,11 +16,10 @@ export const FilterButton = styled.button`
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.6rem 1rem;
+  padding: 0.6rem 0.6rem;
   background-color:transparent;
-  border-color: var(--primary-green);
   color:var(--neutral-dark-gray);
-  border: 2px solid var(--primary-green);
+  border: 2px solid ${props => props.$isOpen ? 'var(--primary-green)' : 'var(--neutral-light-gray)'};
   border-radius: 8px;
   font-size: 1rem;
   font-weight: 600;

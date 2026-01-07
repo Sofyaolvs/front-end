@@ -69,7 +69,7 @@ export const ContentFilters = ({
 
   return (
     <FiltersContainer ref={containerRef}>
-      <FilterButton onClick={() => setIsOpen(!isOpen)}>
+      <FilterButton $isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
         <img src={filterIcon} alt="Filtro" /> Filtrar
       </FilterButton>
 
