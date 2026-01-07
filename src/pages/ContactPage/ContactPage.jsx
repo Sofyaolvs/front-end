@@ -17,7 +17,7 @@ import { BasicSelect } from "../../components/BasicSelect/BasicSelect.jsx"
 import WhereFindImage from "../../assets/where-find-header.png"
 import { BasicTextarea } from "../../components/BasicTextarea/BasicTextarea.jsx"
 import { useForm, Controller } from "react-hook-form"
-import BikeUnimed from "../../assets/bike-unimed.png"
+import faleConosco from "../../assets/faleconosco.png"
 import CheckedCircle from "../../assets/check_circle.svg"
 import Cancel from "../../assets/cancel.svg"
 import { texts } from "../../resources/texts.js"
@@ -105,7 +105,7 @@ export default function ContactPage() {
       <ContentWrapper>
         {!isTablet && (
           <IlustrationContainer>
-            <IlustrationImage src={BikeUnimed} alt="Ilustração" />
+            <IlustrationImage src={faleConosco} alt="Ilustração" />
           </IlustrationContainer>
         )}
 

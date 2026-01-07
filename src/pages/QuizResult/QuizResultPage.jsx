@@ -23,6 +23,7 @@ import grade5Fotos from "../../assets/grade_5fotos.png"
 import { useWindowDimensions } from "../../hooks/useWindowDimensions.jsx"
 import BreadcrumbComponent from "../../components/BreadcrumbComponent/BreadcrumbComponent"
 import { texts } from "../../resources/texts.js"
+import { useState } from "react"
 
 export function QuizResultPage() {
   const { isTablet, isMobile } = useWindowDimensions()
@@ -33,6 +34,7 @@ export function QuizResultPage() {
     []
 
   const navigate = useNavigate()
+  const [showAllRoutes, setShowAllRoutes] = useState(false)
 
   const navigationHandler = (route) => {
     const routeId = route.route.properties.id || route.route.properties.fid
@@ -45,7 +47,8 @@ export function QuizResultPage() {
   }
 
   function renderBestRoutesCards() {
-    return bestRoutes.map((route, index) => {
+    const routesToShow = showAllRoutes ? bestRoutes : bestRoutes.slice(0, 3)
+    return routesToShow.map((route, index) => {
       console.log("route",route);
       let durationInMinutes = Math.round((route.route.properties.dist_total / 1000) / 15 * 60)
       return (
@@ -95,6 +98,14 @@ export function QuizResultPage() {
           />
         </HeroSectionContainer>
         <RoutesContainer>{renderBestRoutesCards()}</RoutesContainer>
+        {bestRoutes.length > 3 && !showAllRoutes &&(
+          <div style={{display:'flex', justifyContent:'center',marginTop:'2rem'}}>
+            <Button
+            placeholder={"Ver mais rotas"}
+            onClick={() => setShowAllRoutes(true)}
+            />
+          </div>
+        )}
         <ColumnReverserContainer>
           <TextsAndButtonContainer $center>
             <DisplayText2>

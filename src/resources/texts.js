@@ -19,7 +19,7 @@ export const texts = {
       "Início",
       "Pedale por Fortaleza",
       "Onde encontrar",
-      "Conteúdos",
+      "Dados e Conteúdos",
 
       
       "Sobre o projeto",
@@ -110,11 +110,11 @@ export const texts = {
     },
 
     contentTexts: {
-      title: "Conteúdos",
+      title: "Dados e Conteúdos",
       link: "/conteudos",
-      heroHeader: "Conteúdos",
+      heroHeader: "Dados e Conteúdos",
       heroSubheader:
-        "Fique por dentro das últimos conteúdos sobre ciclomobilidade em Fortaleza",
+        "Fique por dentro das últimos dados e conteúdos sobre ciclomobilidade em Fortaleza",
     },
 
     newsAndContentAdminTexts: {

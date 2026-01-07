@@ -1,0 +1,145 @@
+import { useState, useRef, useEffect } from 'react'
+import filterIcon from '../../assets/filterIcon.svg'
+import {
+  FiltersContainer,
+  FilterButton,
+  FilterPopup,
+  FilterHeader,
+  FilterTitle,
+  Divider,
+  FilterSection,
+  FilterRow,
+  FilterLabel,
+  ClearText,
+  SearchInput,
+  DateFiltersContainer,
+  DateInputWrapper,
+  DateInput,
+  SelectDropdown,
+  ButtonsContainer,
+  ClearAllButton,
+  ApplyButton,
+} from './styles.js'
+
+
+export const ContentFilters = ({
+  selectedTag,
+  onTagChange,
+  searchText,
+  onSearchChange,
+  startDate,
+  endDate,
+  onStartDateChange,
+  onEndDateChange,
+  onClearFilters
+}) => {
+  const [isOpen, setIsOpen] = useState(false)
+  const containerRef = useRef(null)
+
+  const handleClearDates = () => {
+    onStartDateChange('')
+    onEndDateChange('')
+  }
+
+  const handleClearType = () => {
+    onTagChange('')
+  }
+
+  const handleClearSearch = () => {
+    onSearchChange('')
+  }
+
+  const handleApply = () => {
+    setIsOpen(false)
+  }
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (containerRef.current && !containerRef.current.contains(event.target)) {
+        setIsOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
+  return (
+    <FiltersContainer ref={containerRef}>
+      <FilterButton onClick={() => setIsOpen(!isOpen)}>
+        <img src={filterIcon} alt="Filtro" /> Filtrar
+      </FilterButton>
+
+      {isOpen && (
+        <FilterPopup>
+          <FilterHeader>
+            <FilterTitle>Filtrar</FilterTitle>
+          </FilterHeader>
+          <Divider />
+
+          <FilterSection>
+            <FilterRow>
+              <FilterLabel>Filtrar por data</FilterLabel>
+              <ClearText onClick={handleClearDates}>Limpar</ClearText>
+            </FilterRow>
+            <DateFiltersContainer>
+              <DateInputWrapper>
+                <FilterLabel style={{fontSize:'0.75rem', fontWeight:'normal'}}>Data inicial:</FilterLabel>
+                <DateInput
+                  type='date'
+                  value={startDate}
+                  onChange={(e) => onStartDateChange(e.target.value)}
+                />
+              </DateInputWrapper>
+
+              <DateInputWrapper>
+                <FilterLabel style={{fontSize:'0.75rem', fontWeight:'normal'}}>Data final:</FilterLabel>
+                <DateInput
+                  type='date'
+                  value={endDate}
+                  onChange={(e) => onEndDateChange(e.target.value)}
+                />
+              </DateInputWrapper>
+            </DateFiltersContainer>
+          </FilterSection>
+
+          <Divider />
+
+          <FilterSection>
+            <FilterRow>
+              <FilterLabel>Tipo de conteúdo</FilterLabel>
+              <ClearText onClick={handleClearType}>Limpar</ClearText>
+            </FilterRow>
+            <SelectDropdown value={selectedTag} onChange={(e) => onTagChange(e.target.value)}>
+              <option value="">Selecione...</option>
+              <option value="dados">Dados</option>
+              <option value="conteudos">Conteúdos</option>
+            </SelectDropdown>
+          </FilterSection>
+
+          <Divider />
+
+          <FilterSection>
+            <FilterRow>
+              <FilterLabel>Pesquisa por texto</FilterLabel>
+              <ClearText onClick={handleClearSearch}>Limpar</ClearText>
+            </FilterRow>
+            <SearchInput
+              type='text'
+              placeholder='Digite para buscar'
+              value={searchText}
+              onChange={(e) => onSearchChange(e.target.value)}
+            />
+          </FilterSection>
+
+          <Divider />
+
+          <ButtonsContainer>
+            <ClearAllButton onClick={onClearFilters}>Limpar todos</ClearAllButton>
+            <ApplyButton onClick={handleApply}>Aplicar</ApplyButton>
+          </ButtonsContainer>
+        </FilterPopup>
+      )}
+    </FiltersContainer>
+  )
+}

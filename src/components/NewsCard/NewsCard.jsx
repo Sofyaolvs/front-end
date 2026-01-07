@@ -10,8 +10,8 @@ import {
   CardDate,
   CardSeeMore,
 } from './styles.js'
-import noticiasImg from '../../assets/noticias.jpg'
-import relatorioDadosImg from '../../assets/relatorio_dados.jpg'
+import noticiasImg from '../../assets/noticias.png'
+import relatorioDadosImg from '../../assets/relatorio_dados.png'
 
 export const NewsCard = ({ image, title, description, date, onReadMore, tipo }) => {
   const getImageByType = () => {

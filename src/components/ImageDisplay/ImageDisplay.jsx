@@ -16,7 +16,7 @@ export function ImageDisplay({ images }) {
   const [isBeginning, setIsBeginning] = useState(true)
   const [isEnd, setIsEnd] = useState(false)
   const { width, isMobile } = useWindowDimensions()
-  const slidesPerView = isMobile ? 1 : 4
+  const slidesPerView = isMobile ? 1 : 3
 
 
   if (!images || !Array.isArray(images) || images.length === 0) {
@@ -27,10 +27,14 @@ export function ImageDisplay({ images }) {
     <Container>
       <Swiper
 
-        modules={[Navigation, Pagination, Scrollbar, A11y]}
+       modules={[Navigation, Pagination, Scrollbar, A11y]}
         centerInsufficientSlides={true}
+        centeredSlides={false}
         spaceBetween={16}
         slidesPerView={slidesPerView}
+        slidesPerGroup={slidesPerView}
+        watchOverflow={true}
+
         navigation={{
           nextEl: ".route-details-image-custom-next",
           prevEl: ".route-details-image-custom-prev",

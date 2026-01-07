@@ -18,6 +18,22 @@ export const MapInterests = ({ pointsInterest }) => {
 
     // Criar novos marcadores
     pointsInterest.forEach((item, index) => {
+      // Validar se as coordenadas existem e são válidas
+      if (!item.geometry || !item.geometry.coordinates || item.geometry.coordinates.length < 2) {
+        console.warn(`Ponto de interesse ${index} não possui coordenadas válidas:`, item)
+        return
+      }
+
+      const [lng, lat] = item.geometry.coordinates
+      const latitude = parseFloat(lat)
+      const longitude = parseFloat(lng)
+
+      // Verificar se as coordenadas são números válidos
+      if (isNaN(latitude) || isNaN(longitude)) {
+        console.warn(`Coordenadas inválidas no ponto ${index}:`, { lat, lng, item })
+        return
+      }
+
       const customIcon = L.divIcon({
         className: "custom-div-interest-icon",
         html: `<div class="marker-number">${index + 1}</div>`,
@@ -25,8 +41,7 @@ export const MapInterests = ({ pointsInterest }) => {
         iconAnchor: [15, 30],
       })
 
-      const [lat, lng] = [...item.geometry.coordinates].reverse()
-      const marker = new Marker([lat, lng], {
+      const marker = new Marker([latitude, longitude], {
         icon: customIcon,
       }).addTo(map)
 

@@ -317,7 +317,7 @@ export const NewsAndContentAdmin = () => {
             value={formData.titulo}
             onChange={handleInputChange}
             placeholder="Título"
-            maxLength={45}
+            maxLength={100}
             required
           />
         </FormGroup>
@@ -372,11 +372,11 @@ export const NewsAndContentAdmin = () => {
 
       {isLoadingContents ? (
         <div style={{ textAlign: 'center', padding: '2rem', width: '100%' }}>
-          Carregando conteúdos existentes...
+          Carregando dados e conteúdos existentes...
         </div>
       ) : contents.length === 0 ? (
         <div style={{ textAlign: 'center', padding: '2rem', width: '100%' }}>
-          Nenhum conteúdo publicado ainda
+          Nenhum dado ou conteúdo publicado ainda
         </div>
       ) : (
         contents.map((content) => (
