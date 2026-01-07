@@ -47,7 +47,6 @@ export const FilterPopup = styled.div`
   border-radius: 12px; 
   padding: 1.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
   min-width: 400px;
   display: flex;
   flex-direction: column;
@@ -70,7 +69,7 @@ export const FilterSection = styled.div`
 export const FilterLabel = styled.label`
   font-size: 0.9rem;
   font-weight: 600;
-  color: #333;
+  color: var(--neutral-dark-gray);
 `
 
 export const TagsContainer = styled.div`
@@ -83,7 +82,7 @@ export const TagButton = styled.button`
   padding: 0.5rem 1.25rem;
   border: 2px solid ${props => props.$active ? 'var(--secondary-orange)' : '#ddd'};
   background-color: ${props => props.$active ? 'var(--secondary-orange)' : '#fff'};
-  color: ${props => props.$active ? '#fff' : '#333'};
+  color: ${props => props.$active ? '#fff' : 'var(--neutral-dark-gray'};
   border-radius: 8px;
   font-size: 0.9rem;
   font-weight: 500;
@@ -95,13 +94,32 @@ export const TagButton = styled.button`
   }
 `
 
+export const SearchInputWrapper = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+`
+
+export const SearchInputIcon = styled.img`
+  position: absolute;
+  left: 1rem;
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+`
+
 export const SearchInput = styled.input`
-  padding: 0.7rem 1rem;
+  padding: 0.7rem 1rem 0.7rem 2.75rem;
   border: 1px solid #ddd;
   border-radius: 8px;
   font-size: 1rem;
   outline: none;
   transition: border-color 0.3s ease;
+  width: 100%;
+
+  &::placeholder {
+    color: #b0b0b0;
+  }
 
   &:focus {
     border-color: var(--secondary-orange);
@@ -137,6 +155,11 @@ export const DateInput = styled.input`
   font-size: 1rem;
   outline: none;
   transition: border-color 0.3s ease;
+  color: #999;
+
+  &::-webkit-calendar-picker-indicator {
+    opacity: 0.6;
+  }
 
   &:focus {
     border-color: var(--secondary-orange);
@@ -151,28 +174,28 @@ export const FilterHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding-bottom: 0.5rem;
 `
 
 export const FilterTitle = styled.h3`
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
-  color: #333;
-  margin: 0;
+  color: var(--neutral-dark-gray);
 `
 
 export const Divider = styled.hr`
-  width: 100%;
+  width: calc(100% + 3rem);
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
   border: none;
   border-top: 1px solid #ddd;
-  margin: 0.75rem 0;
+  margin-top: 0;
+  margin-bottom: 0;
 `
 
 export const FilterRow = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 0.5rem;
 `
 
 export const ClearText = styled.span`
@@ -187,7 +210,7 @@ export const ClearText = styled.span`
 `
 
 export const SelectDropdown = styled.select`
-  padding: 0.75rem 1rem;
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
   border: 1px solid #ddd;
   border-radius: 8px;
   font-size: 1rem;
@@ -195,6 +218,11 @@ export const SelectDropdown = styled.select`
   transition: border-color 0.3s ease;
   background-color: #fff;
   cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='14' height='8' viewBox='0 0 14 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M1 1L7 7L13 1' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 14px;
 
   &:focus {
     border-color: var(--secondary-orange);
@@ -219,8 +247,8 @@ export const ButtonsContainer = styled.div`
 export const ClearAllButton = styled.button`
   padding: 0.75rem 1.5rem;
   background-color: transparent;
-  color: #666;
-  border: 1px solidvar(var(--primary-green));
+  color: var(--primary-green);
+  border: 2px solid var(--primary-green);
   border-radius: 24px;
   font-size: 0.9rem;
   font-weight: 600;
@@ -228,7 +256,8 @@ export const ClearAllButton = styled.button`
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: #f5f5f5;
+    background-color: var(--primary-green);
+    color:#ffff;
   }
 
   @media (max-width: 768px) {
@@ -237,7 +266,7 @@ export const ClearAllButton = styled.button`
 `
 
 export const ApplyButton = styled.button`
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 3rem;
   background-color: var(--secondary-orange);
   color: #fff;
   border: none;

@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import filterIcon from '../../assets/filterIcon.svg'
+import serachIcon from '../../assets/searchIconGray.svg'
 import {
   FiltersContainer,
   FilterButton,
@@ -11,6 +12,8 @@ import {
   FilterRow,
   FilterLabel,
   ClearText,
+  SearchInputWrapper,
+  SearchInputIcon,
   SearchInput,
   DateFiltersContainer,
   DateInputWrapper,
@@ -84,7 +87,7 @@ export const ContentFilters = ({
             </FilterRow>
             <DateFiltersContainer>
               <DateInputWrapper>
-                <FilterLabel style={{fontSize:'0.75rem', fontWeight:'normal'}}>Data inicial:</FilterLabel>
+                <FilterLabel style={{fontSize:'0.75rem', fontWeight:'normal', color:'#999'}}>Data inicial:</FilterLabel>
                 <DateInput
                   type='date'
                   value={startDate}
@@ -93,7 +96,7 @@ export const ContentFilters = ({
               </DateInputWrapper>
 
               <DateInputWrapper>
-                <FilterLabel style={{fontSize:'0.75rem', fontWeight:'normal'}}>Data final:</FilterLabel>
+                <FilterLabel style={{fontSize:'0.75rem', fontWeight:'normal', color:'#999'}}>Data final:</FilterLabel>
                 <DateInput
                   type='date'
                   value={endDate}
@@ -124,12 +127,15 @@ export const ContentFilters = ({
               <FilterLabel>Pesquisa por texto</FilterLabel>
               <ClearText onClick={handleClearSearch}>Limpar</ClearText>
             </FilterRow>
-            <SearchInput
-              type='text'
-              placeholder='Digite para buscar'
-              value={searchText}
-              onChange={(e) => onSearchChange(e.target.value)}
-            />
+            <SearchInputWrapper>
+              <SearchInputIcon src={serachIcon} alt="Buscar" />
+              <SearchInput
+                type='text'
+                placeholder='Digite para buscar...'
+                value={searchText}
+                onChange={(e) => onSearchChange(e.target.value)}
+              />
+            </SearchInputWrapper>
           </FilterSection>
 
           <Divider />
