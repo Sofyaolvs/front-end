@@ -1,3 +1,5 @@
+import styled from "styled-components"
+
 export const Container = styled.div`
   position: relative;
   width: 100%;
@@ -32,6 +34,7 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
     transition: 0.3s;
     user-select: none;
     border: none;
@@ -60,6 +63,10 @@ export const Container = styled.div`
     top: 50%;
     transform: translateY(-50%);
   }
+  .route-details-image-custom-next:hover,
+  .route-details-image-custom-prev:hover {
+    cursor: pointer;
+  }
 `
 export const Image = styled.img`
   width: 100%;
@@ -79,6 +86,13 @@ export const Image = styled.img`
 `
 export const PaginationDiv = styled.div`
   .route-details-image-custom-pagination {
+    display: none;
+  }
+`
+
+export const Button = styled.button`
+  background-color: ${(props) =>
+    props.$isActive ? "var(--secondary-orange)" : "var(--neutral-gray)"};
 `
 export const ArrowIcon = styled.img`
   user-select: none;
