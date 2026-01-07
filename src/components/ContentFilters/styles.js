@@ -43,7 +43,7 @@ export const FilterPopup = styled.div`
   right: 2rem;
   background-color: #fff;
   border: 1px solid #ddd;
-  border-radius: 12px; 
+  border-radius: 12px;
   padding: 1.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   min-width: 400px;
