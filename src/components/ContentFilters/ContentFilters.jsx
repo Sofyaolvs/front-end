@@ -37,7 +37,9 @@ export const ContentFilters = ({
   onClearFilters
 }) => {
   const [isOpen, setIsOpen] = useState(false)
+  const [popupPosition, setPopupPosition] = useState({ top: 0, right: 0 })
   const containerRef = useRef(null)
+  const buttonRef = useRef(null)
 
   const [tempSelectedTag, setTempSelectedTag] = useState('')
   const [tempSearchText, setTempSearchText] = useState('')
@@ -50,6 +52,15 @@ export const ContentFilters = ({
       setTempSearchText(searchText)
       setTempStartDate(startDate)
       setTempEndDate(endDate)
+
+      // Calcular posição do popup
+      if (buttonRef.current) {
+        const rect = buttonRef.current.getBoundingClientRect()
+        setPopupPosition({
+          top: rect.bottom + 8,
+          right: window.innerWidth - rect.right
+        })
+      }
     }
   }, [isOpen, selectedTag, searchText, startDate, endDate])
 
@@ -92,18 +103,35 @@ export const ContentFilters = ({
       }
     }
 
+    const handleResize = () => {
+      if (isOpen && buttonRef.current) {
+        const rect = buttonRef.current.getBoundingClientRect()
+        setPopupPosition({
+          top: rect.bottom + 8,
+          right: window.innerWidth - rect.right
+        })
+      }
+    }
+
     document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [])
+    window.addEventListener('resize', handleResize)
+    window.addEventListener('scroll', handleResize)
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+      window.removeEventListener('resize', handleResize)
+      window.removeEventListener('scroll', handleResize)
+    }
+  }, [isOpen])
 
   return (
     <FiltersContainer ref={containerRef}>
-      <FilterButton $isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
+      <FilterButton ref={buttonRef} $isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
         <img src={filterIcon} alt="Filtro" /> Filtrar
       </FilterButton>
 
       {isOpen && (
-        <FilterPopup>
+        <FilterPopup $top={popupPosition.top} $right={popupPosition.right}>
           <FilterHeader>
             <FilterTitle>Filtrar</FilterTitle>
           </FilterHeader>

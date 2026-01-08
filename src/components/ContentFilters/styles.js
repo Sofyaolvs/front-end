@@ -7,6 +7,7 @@ export const FiltersContainer = styled.div`
   width: 100%;
   max-width: 90rem;
   padding: 2rem;
+
   @media (max-width: 768px) {
     padding: 1rem;
   }
@@ -25,6 +26,7 @@ export const FilterButton = styled.button`
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-sizing: border-box;
 
   &:hover {
     opacity: 0.9;
@@ -38,23 +40,50 @@ export const FilterButton = styled.button`
 `
 
 export const FilterPopup = styled.div`
-  position: absolute;
-  top: calc(100% - 1rem);
-  right: 2rem;
+  position: fixed;
+  top: ${props => props.$top}px;
+  right: ${props => props.$right}px;
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 12px;
   padding: 1.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  min-width: 400px;
+  width: 400px;
+  max-height: calc(100vh - ${props => props.$top + 20}px);
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  z-index: 9999;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  /* Custom scrollbar */
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  @media (max-width: 1024px) {
+    width: 350px;
+  }
 
   @media (max-width: 768px) {
     left: 1rem;
     right: 1rem;
-    min-width: auto;
+    width: auto;
     max-width: calc(100vw - 2rem);
   }
 `
@@ -63,6 +92,8 @@ export const FilterSection = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  width: 100%;
+  min-width: 0;
 `
 
 export const FilterLabel = styled.label`
@@ -97,6 +128,8 @@ export const SearchInputWrapper = styled.div`
   position: relative;
   display: flex;
   align-items: center;
+  width: 100%;
+  min-width: 0;
 `
 
 export const SearchInputIcon = styled.img`
@@ -115,6 +148,8 @@ export const SearchInput = styled.input`
   outline: none;
   transition: border-color 0.3s ease;
   width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 
   &::placeholder {
     color: #b0b0b0;
@@ -144,17 +179,24 @@ export const DateInputWrapper = styled.div`
   flex-direction: column;
   gap: 0.5rem;
   flex: 1;
-  min-width: 150px;
+  min-width: 0;
+
+  @media (min-width: 769px) {
+    min-width: 150px;
+  }
 `
 
 export const DateInput = styled.input`
-  padding: 0.75rem ;
+  padding: 0.75rem;
   border: 1px solid #ddd;
   border-radius: 8px;
   font-size: 1rem;
   outline: none;
   transition: border-color 0.3s ease;
   color: #999;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 
   &::-webkit-calendar-picker-indicator {
     opacity: 0.6;
@@ -182,13 +224,10 @@ export const FilterTitle = styled.h3`
 `
 
 export const Divider = styled.hr`
-  width: calc(100% + 3rem);
-  margin-left: -1.5rem;
-  margin-right: -1.5rem;
+  width: 100%;
   border: none;
   border-top: 1px solid #ddd;
-  margin-top: 0;
-  margin-bottom: 0;
+  margin: 0;
 `
 
 export const FilterRow = styled.div`
@@ -222,6 +261,9 @@ export const SelectDropdown = styled.select`
   background-repeat: no-repeat;
   background-position: right 1rem center;
   background-size: 14px;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 
   &:focus {
     border-color: var(--secondary-orange);
@@ -253,6 +295,7 @@ export const ClearAllButton = styled.button`
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-sizing: border-box;
 
   &:hover {
     background-color: var(--primary-green);
@@ -274,6 +317,7 @@ export const ApplyButton = styled.button`
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-sizing: border-box;
 
   &:hover {
     opacity: 0.9;
