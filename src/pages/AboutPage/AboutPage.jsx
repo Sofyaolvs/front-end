@@ -54,6 +54,9 @@ const AboutPage = () => {
         </InformationTitle>
         <InformationText>
           {texts.pages.aboutTexts.contentSection[5]}
+          <br />
+          <br />
+          {texts.pages.aboutTexts.contentSection[6]}
         </InformationText>
       </InformationContainer>
       <FullScaleImageContainer>
@@ -61,13 +64,13 @@ const AboutPage = () => {
       </FullScaleImageContainer>
       <InformationContainer>
         <InformationTitle>
-          {texts.pages.aboutTexts.contentSection[6]}
+          {texts.pages.aboutTexts.contentSection[7]}
         </InformationTitle>
         <InformationText>
-          {texts.pages.aboutTexts.contentSection[7]}
-          <br />
-          <br />
           {texts.pages.aboutTexts.contentSection[8]}
+          <br />
+          <br />
+          {texts.pages.aboutTexts.contentSection[9]}
         </InformationText>
       </InformationContainer>
       <IlustrationContainer>
@@ -75,12 +78,9 @@ const AboutPage = () => {
       </IlustrationContainer>
       <InformationContainer>
         <InformationTitle>
-          {texts.pages.aboutTexts.contentSection[9]}
+          {texts.pages.aboutTexts.contentSection[10]}
         </InformationTitle>
         <InformationText>
-          {texts.pages.aboutTexts.contentSection[10]}
-          <br />
-          <br />
           {texts.pages.aboutTexts.contentSection[11]}
         </InformationText>
       </InformationContainer>
