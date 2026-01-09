@@ -45,13 +45,6 @@ function calculateRouteGrade(
 
   const c = (1 / pCom) * ((segV + segP) / 2)
 
-  console.log("CALCULO DAS ROTAS")
-  console.log("a ="+a)
-  console.log("b ="+b)
-  console.log("c ="+c)
-
-
-
   return a + b + c
 }
 
@@ -67,18 +60,15 @@ export async function calculateBestRoutes(
 ) {
   let routesGrades = []
 
-  console.log('routesJson recebido:', routesJson)
-  console.log('routesJson.features:', routesJson?.features)
-
   if (!routesJson || !routesJson.features) {
-    console.error('Erro: routesJson não foi fornecido ou não possui features. Os dados devem vir da API.')
     return []
   }
 
   const routesData = routesJson
 
   const routes = uniqueFeatures(routesData.features)
-  routes.forEach((r) => {
+
+  routes.forEach((r, index) => {
     const D = r.properties.dist
     const I = r.properties.inclinacao
     const Nat = r.properties.nat
@@ -88,7 +78,7 @@ export async function calculateBestRoutes(
     const Rec = r.properties.rec
     const segV = r.properties.seg_viaria
     const segP = r.properties.seg_publica
-    const name = r.properties.rota
+
     const calculatedGrade = calculateRouteGrade(
       pEner,
       pNat,
@@ -119,11 +109,9 @@ export async function calculateBestRoutes(
   //todavia, agora tem umas circulares e outras com 'desvios',
   //sendo necessário filtrar as rotas para usar apenas a primeira daquelas com um id unico como base
 
-  routesGrades = routesGrades.filter((r, i) => i % 2 !== 0)
+  routesGrades = routesGrades.filter((r, i) => i % 2 === 0)
 
   routesGrades = routesGrades.slice(0, 4)
-
-  console.log(routesGrades)
 
   return routesGrades
 }

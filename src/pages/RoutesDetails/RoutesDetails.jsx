@@ -15,11 +15,6 @@ import {
   IconText,
   MainContent,
   AboutSection,
-  TuristicSpotsSection,
-  TuristicSpotsItem,
-  TouristAttractionTitle,
-  TuristicSpotsTitle,
-  TouristAttractionContainer,
   RouteDetailTitle,
   RouteDetailDescription,
   RouteTextContainer,
@@ -71,7 +66,6 @@ export default function RouteDetails() {
         (data) => data.name === "Estações Bicicletar"
       )[0].data.length == 0
     ) {
-      console.log("fetching in RoutesDetails")
       fetchSingleLayerData("estacoes-bicicletar")
     }
     if (currentRoutes.length === 0) {
@@ -196,42 +190,6 @@ export default function RouteDetails() {
     }
   })()
 
-  // Criar pontosTuristicos baseado nos pontos_interesse do mapa
-  const pontosTuristicosData = {}
-
-  // Pegar pontos de interesse do mapa
-  if (pontosInteresse && pontosInteresse.length > 0) {
-    pontosInteresse.forEach((ponto, index) => {
-      const nomePonto = ponto.Name || ponto.name || `Ponto ${index + 1}`
-      // Buscar descrição do routeData.pontosTuristicos ou usar string vazia
-      const descricao = routeData.pontosTuristicos?.[nomePonto] || ""
-      pontosTuristicosData[nomePonto] = descricao
-    })
-  } else {
-    // Fallback: usar pontosTuristicos do routeData se não houver pontos_interesse
-    Object.assign(pontosTuristicosData, routeData.pontosTuristicos || {})
-  }
-
-  const pontosTuristicosElements = Object.entries(pontosTuristicosData).map(([key, value], index) => {
-    return (
-      <TouristAttractionContainer key={index} id={`ponto-turistico-${index + 1}`}>
-        <TouristAttractionTitle>
-          {index + 1}. {key}
-        </TouristAttractionTitle>
-        {value && value.trim().length > 0 && (
-          <p>
-            {value.split("\n").map((line, lineIndex) => (
-              <React.Fragment key={lineIndex}>
-                {line}
-                <br />
-              </React.Fragment>
-            ))}
-          </p>
-        )}
-      </TouristAttractionContainer>
-    )
-  })
-
   const bairrosElements = (Array.isArray(routeData.bairros)
     ? routeData.bairros.flat()
     : Object.values(routeData.bairros || {})
@@ -320,15 +278,6 @@ export default function RouteDetails() {
                     color: '#333'
                   }}
                 />
-                {/* Renderizar pontos com IDs mesmo quando há texto_pagina customizado */}
-                {pontosTuristicosElements.length > 0 && (
-                  <TuristicSpotsSection style={{ marginTop: '2rem' }}>
-                    <TuristicSpotsTitle $isTablet={isTablet}>
-                      Pontos turísticos
-                    </TuristicSpotsTitle>
-                    {pontosTuristicosElements}
-                  </TuristicSpotsSection>
-                )}
               </>
             ) : (
               <>
@@ -340,12 +289,6 @@ export default function RouteDetails() {
                   <BairroTextStrong>Bairros:</BairroTextStrong>
                   {bairrosElements}
                 </BairrosRow>
-                <TuristicSpotsSection>
-                  <TuristicSpotsTitle $isTablet={isTablet}>
-                    Pontos turísticos
-                  </TuristicSpotsTitle>
-                  {pontosTuristicosElements}
-                </TuristicSpotsSection>
               </>
             )}
           </MainContent>

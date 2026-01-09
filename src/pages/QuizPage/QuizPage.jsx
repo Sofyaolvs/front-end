@@ -72,7 +72,7 @@ export function QuizPage() {
     },
   ])
   const selectedTypes = routeTypes.filter((routeType) => routeType.isSelected)
-
+  
   const questionsTitles = [
     <>Como está a sua disposição para pedalar?</>,
     <>Que tipo de experiência você busca hoje?</>,
@@ -120,7 +120,7 @@ export function QuizPage() {
     const pNat = selectedTypes.find((rT) => rT.value === 2) ? 1 : 0
     const pRec = selectedTypes.find((rT) => rT.value === 3) ? 1 : 0
     const pCont = selectedTypes.find((rT) => rT.value === 4) ? 1 : 0
-    const pCom = isAccompanied ? 1 : 0.5
+    const pCom = isAccompanied ? 0.5 : 1
 
     const bestRoutes = await calculateBestRoutes(
       pEner,
