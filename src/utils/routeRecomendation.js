@@ -45,7 +45,18 @@ function calculateRouteGrade(
 
   const c = (1 / pCom) * ((segV + segP) / 2)
 
-  return a + b + c
+  const result = b + c - a
+
+  console.log({
+    D,
+    I,
+    a,
+    b,
+    c,
+    result
+  })
+
+  return result
 }
 
 export async function calculateBestRoutes(
@@ -79,6 +90,9 @@ export async function calculateBestRoutes(
     const segV = r.properties.seg_viaria
     const segP = r.properties.seg_publica
 
+    console.log(`\n--- Rota: ${r.properties.rota} (${r.properties.sentido}) ---`)
+    console.log(`dist_total: ${r.properties.dist_total}m`)
+
     const calculatedGrade = calculateRouteGrade(
       pEner,
       pNat,
@@ -101,9 +115,7 @@ export async function calculateBestRoutes(
     routesGrades.push({ grade: calculatedGrade, route: r })
   })
 
-  routesGrades.sort((a, b) => a.grade - b.grade)
-
-  routesGrades.reverse()
+  routesGrades.sort((a, b) => b.grade - a.grade)
 
   //as rotas vem com ida e volta sempre ao lado da outra, entao eu
   //todavia, agora tem umas circulares e outras com 'desvios',
