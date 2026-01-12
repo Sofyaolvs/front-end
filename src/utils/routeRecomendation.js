@@ -37,13 +37,13 @@ function calculateRouteGrade(
   segV,
   segP
 ) {
-  const a = (1 / pEner) * ((D + I) / 2)
+  const a = (1 / pEner) * ((3*D + I) / 2)
 
   const b =
     (pNat * Nat + pCult * Cult + pCont * Cont + pGast * Gast + pRec * Rec) /
     (pNat + pCult + pCont + pGast + pRec)
-
-  const c = (1 / pCom) * ((segV + segP) / 2)
+    
+  const c = (pCom) * ((2*segV + segP) / 2)
 
   return a + b + c
 }

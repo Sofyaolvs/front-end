@@ -45,7 +45,7 @@ export default function FortalezaMap({
       icon: PontoApoioIcon,
       points: pontosApoio,
       markerType: "apoio",
-      color: "#57BE7B",
+      color:'#3F5660'
     })
   }
   if (pontosSaude) {
@@ -54,7 +54,7 @@ export default function FortalezaMap({
       icon: PontoSaudeIcon,
       points: pontosSaude,
       markerType: "saude",
-      color: "#EB4649",
+      color:'#23A4DE'
     })
   }
 

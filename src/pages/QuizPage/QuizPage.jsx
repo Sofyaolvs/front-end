@@ -113,14 +113,14 @@ export function QuizPage() {
       return
     }
 
-    const questionOneDicionary = { 0: 1, 1: 2, 2: 3, 3: 4, 4: 5 }
+     const questionOneDicionary = { 0: 5, 1: 2, 2: 3, 3: 4, 4: 5 }
     const pEner = questionOneDicionary[selectedEmoji]
     const pGast = selectedTypes.find((rT) => rT.value === 0) ? 1 : 0
     const pCult = selectedTypes.find((rT) => rT.value === 1) ? 1 : 0
     const pNat = selectedTypes.find((rT) => rT.value === 2) ? 1 : 0
     const pRec = selectedTypes.find((rT) => rT.value === 3) ? 1 : 0
     const pCont = selectedTypes.find((rT) => rT.value === 4) ? 1 : 0
-    const pCom = isAccompanied ? 0.5 : 1
+    const pCom = isAccompanied ? 0.5 : 1 // Se eu entendi quando a pessoa tá acompanhada o pCom é 0.5 né? É pra ser isso.
 
     const bestRoutes = await calculateBestRoutes(
       pEner,
@@ -137,11 +137,12 @@ export function QuizPage() {
       showErrorToast("Não foi possível calcular as melhores rotas. Verifique se há rotas disponíveis na API.")
       return
     }
-
+    
     await showLoading()
     sessionStorage.setItem("bestRoutes", JSON.stringify(bestRoutes))
     navigate("/rotas-encontradas", { state: { bestRoutes: bestRoutes } })
   }
+
 
   const bread = [
     { label: "Início", path: "/" },

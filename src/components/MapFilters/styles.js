@@ -53,6 +53,8 @@ export const Buttom = styled.label`
   }
 
   img {
+    width: 28px;
+    height: 28px;
     //inactive
     filter: invert(36%) sepia(0%) saturate(0%) hue-rotate(190deg)
       brightness(87%) contrast(83%);

@@ -3,8 +3,8 @@ import { Marker } from "leaflet"
 import { useMap } from "react-leaflet"
 import L from "leaflet"
 
-import ApoioMarker from "../../assets/marcadores/ponto-apoio-marcador.svg"
-import SaudeMarker from "../../assets/marcadores/ponto-saude-marcador.svg"
+import ApoioMarker from "../../assets/ponto-apoio.svg"
+import SaudeMarker from "../../assets/ponto-saude.svg"
 
 export const MapMarkers = ({ points, markerType = "default", startIndex = 1 }) => {
   const map = useMap()
@@ -14,8 +14,6 @@ export const MapMarkers = ({ points, markerType = "default", startIndex = 1 }) =
     if (!map || !points || points.length === 0) {
       return
     }
-
-    // Remove ícones antigos
     Object.values(layerRefs.current).forEach((marker) => map.removeLayer(marker))
     layerRefs.current = {}
 
@@ -23,7 +21,6 @@ export const MapMarkers = ({ points, markerType = "default", startIndex = 1 }) =
 
     points.forEach((item, index) => {
 
-      // 🔥 Escolher imagem do ícone (SEM HTML, SEM DIVICON)
       let iconUrl = null
 
       if (markerType === "apoio") {
@@ -31,18 +28,16 @@ export const MapMarkers = ({ points, markerType = "default", startIndex = 1 }) =
       } else if (markerType === "saude") {
         iconUrl = SaudeMarker
       } else {
-        // fallback: numerado ou outro tipo
-        iconUrl = ApoioMarker // coloque um padrão se quiser
+        iconUrl = ApoioMarker
       }
 
       const customIcon = L.icon({
         iconUrl,
-        iconSize: [25, 41],    // AJUSTE AQUI O TAMANHO
-        iconAnchor: [18, 36],  // ponto inferior central
-        popupAnchor: [0, -36],
+        iconSize: [28, 32],
+        iconAnchor: [16, 32],
+        popupAnchor: [0, -32],
       })
 
-      // 📌 Coordenadas
       let coordinates
       if (item.geometry?.coordinates) {
         const coords = item.geometry.coordinates

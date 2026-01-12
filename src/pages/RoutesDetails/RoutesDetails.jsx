@@ -30,8 +30,6 @@ import FortalezaMap from "../../components/FortalezaMap/FortalezaMap.jsx"
 import routesTexts from "../../resources/routesTexts.js"
 import BreadcrumbComponent from "../../components/BreadcrumbComponent/BreadcrumbComponent.jsx"
 import { ImageDisplay } from "../../components/ImageDisplay/ImageDisplay.jsx"
-// import DirectionsBike from "../../assets/directions-bike.svg"
-// import DirectionsBikeMarker from "../../assets/marcadores/bicicletar-marcador.svg"
 import { useWindowDimensions } from "../../hooks/useWindowDimensions.jsx"
 import { formatDuration } from "../../utils/utils.js"
 
@@ -93,7 +91,6 @@ export default function RouteDetails() {
       .flat()
       .filter((item) => item)
 
-    // Extrair pontos de saúde (hospitais, UPAs)
     const pontosSaudeArray = Array.from(
       new Map(
         currentRoutes
@@ -124,7 +121,6 @@ export default function RouteDetails() {
   const routeGeoData = route?.[0]?.properties || {}
   const routeTextData = routesTexts[routeId] || {}
 
-  // Verificar se tem texto_pagina do GeoJSON (HTML)
   const hasTextoPagina = routeGeoData.texto_pagina && routeGeoData.texto_pagina.trim().length > 0
 
   const routeData = {
