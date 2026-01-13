@@ -39,13 +39,14 @@ function calculateRouteGrade(
 ) {
   // Alterei foi tudo aqui, mexam com calma
   const a1 = (pEner - 3.5) * D
-  
+
   const a2 = (pEner * I)/5
 
-  const b =
-    (pNat * Nat + pCult * Cult + pCont * Cont + pGast * Gast + pRec * Rec) /
-    (pNat + pCult + pCont + pGast + pRec)
-    
+  const denominator = pNat + pCult + pCont + pGast + pRec
+  const b = denominator > 0
+    ? (pNat * Nat + pCult * Cult + pCont * Cont + pGast * Gast + pRec * Rec) / denominator
+    : 0
+
   const c = (pCom) * ((segV + segP) / 2)
 
   return 0.25*a1 + 0.15*a2 + 0.3*b + 0.3*c
@@ -71,7 +72,7 @@ export async function calculateBestRoutes(
 
   const routes = uniqueFeatures(routesData.features)
 
-  routes.forEach((r, index) => {
+  routes.forEach((r) => {
     const D = r.properties.dist
     const I = r.properties.inclinacao
     const Nat = r.properties.nat

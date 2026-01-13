@@ -115,7 +115,7 @@ async function handleCalculateBestRoutes() {
     const pNat = selectedTypes.find((rT) => rT.value === 2) ? 1 : 0
     const pRec = selectedTypes.find((rT) => rT.value === 3) ? 1 : 0
     const pCont = selectedTypes.find((rT) => rT.value === 4) ? 1 : 0
-    const pCom = isAccompanied ? 0.5 : 1 // Se eu entendi quando a pessoa tá acompanhada o pCom é 0.5 né? É pra ser isso.
+    const pCom = isAccompanied ? 0.5 : 1 
 
     const bestRoutes = await calculateBestRoutes(
       pEner,
