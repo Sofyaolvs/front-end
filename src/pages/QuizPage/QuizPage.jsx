@@ -107,13 +107,8 @@ export function QuizPage() {
     setIsLoading(false)
   }
 
-  async function handleCalculateBestRoutes() {
-    if (!routesData || error) {
-      showErrorToast("Erro ao carregar rotas.Tente novamente mais tarde.")
-      return
-    }
-
-     const questionOneDicionary = { 0: 5, 1: 2, 2: 3, 3: 4, 4: 5 }
+async function handleCalculateBestRoutes() {
+    const questionOneDicionary = { 0: 5, 1: 2, 2: 3, 3: 4, 4: 5 }
     const pEner = questionOneDicionary[selectedEmoji]
     const pGast = selectedTypes.find((rT) => rT.value === 0) ? 1 : 0
     const pCult = selectedTypes.find((rT) => rT.value === 1) ? 1 : 0
@@ -133,16 +128,10 @@ export function QuizPage() {
       routesData
     )
 
-    if (bestRoutes.length === 0) {
-      showErrorToast("Não foi possível calcular as melhores rotas. Verifique se há rotas disponíveis na API.")
-      return
-    }
-    
     await showLoading()
     sessionStorage.setItem("bestRoutes", JSON.stringify(bestRoutes))
     navigate("/rotas-encontradas", { state: { bestRoutes: bestRoutes } })
   }
-
 
   const bread = [
     { label: "Início", path: "/" },

@@ -37,15 +37,18 @@ function calculateRouteGrade(
   segV,
   segP
 ) {
-  const a = (1 / pEner) * ((3*D + I) / 2)
+  // Alterei foi tudo aqui, mexam com calma
+  const a1 = (pEner - 3.5) * D
+  
+  const a2 = (pEner * I)/5
 
   const b =
     (pNat * Nat + pCult * Cult + pCont * Cont + pGast * Gast + pRec * Rec) /
     (pNat + pCult + pCont + pGast + pRec)
     
-  const c = (pCom) * ((2*segV + segP) / 2)
+  const c = (pCom) * ((segV + segP) / 2)
 
-  return a + b + c
+  return 0.25*a1 + 0.15*a2 + 0.3*b + 0.3*c
 }
 
 export async function calculateBestRoutes(
@@ -101,15 +104,10 @@ export async function calculateBestRoutes(
     routesGrades.push({ grade: calculatedGrade, route: r })
   })
 
-  routesGrades.sort((a, b) => a.grade - b.grade)
+  routesGrades.sort((a, b) => b.grade - a.grade)
 
-  routesGrades.reverse()
-
-  //as rotas vem com ida e volta sempre ao lado da outra, entao eu
-  //todavia, agora tem umas circulares e outras com 'desvios',
-  //sendo necessário filtrar as rotas para usar apenas a primeira daquelas com um id unico como base
-
-  routesGrades = routesGrades.filter((r, i) => i % 2 === 0)
+  //as rotas já foram filtradas pelo uniqueFeatures para pegar apenas rotas únicas
+  //agora pegamos apenas as top 4
 
   routesGrades = routesGrades.slice(0, 4)
 
